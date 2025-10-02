@@ -1,0 +1,74 @@
+﻿@model GiftOfTheGiversMWeb.Models.Donation
+
+@{
+    ViewData["Title"] = "Delete Donation";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-header bg-danger text-white text-center">
+            <h3 class="mb-0">⚠ Confirm Deletion</h3>
+        </div>
+        <div class="card-body bg-light">
+            <p class="text-muted text-center mb-4">
+                Are you sure you want to <strong class="text-danger">delete this donation</strong>? This action cannot be undone.
+            </p>
+
+            <dl class="row">
+                <dt class="col-sm-3 fw-bold text-success">Amount</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Amount)</dd>
+
+                <dt class="col-sm-3 fw-bold text-success">Date Donated</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.DateDonated)</dd>
+
+                <dt class="col-sm-3 fw-bold text-success">Type</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Type)</dd>
+
+                <dt class="col-sm-3 fw-bold text-success">User</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.User.Email)</dd>
+
+                <dt class="col-sm-3 fw-bold text-success">Project</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Project.Title)</dd>
+            </dl>
+
+            <form asp-action="Delete" class="d-flex justify-content-center mt-4">
+                <input type="hidden" asp-for="DonationId" />
+                <button type="submit" class="btn btn-danger me-3 px-4">
+                    🗑 Delete
+                </button>
+                <a asp-action="Index" class="btn btn-secondary px-4">
+                    ↩ Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        max-width: 650px;
+        margin: auto;
+    }
+
+    dl dt {
+        color: #198754; /* Bootstrap green */
+    }
+
+    .btn-danger {
+        border-radius: 8px;
+    }
+
+    .btn-secondary {
+        border-radius: 8px;
+        background-color: #6c757d;
+        border: none;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+</style>

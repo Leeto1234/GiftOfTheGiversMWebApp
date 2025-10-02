@@ -1,0 +1,77 @@
+﻿@model GiftOfTheGiversMWeb.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Register as Volunteer";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 mt-5">
+            <div class="card shadow-sm border-0 rounded-3 mt-5">
+                <div class="card-header bg-success text-white text-center">
+                    <h4 class="mb-0 fw-bold"> Register as Volunteer</h4>
+                </div>
+                <div class="card-body bg-light">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                        <!-- Project Selection -->
+                        <div class="form-floating mb-3">
+                            <select asp-for="ProjectId" class="form-select" asp-items="ViewBag.ProjectId">
+                                <option value="">-- Select a Project --</option>
+                            </select>
+                            <label asp-for="ProjectId" class="form-label"></label>
+                        </div>
+
+                        <!-- Signup Date -->
+                        <div class="form-floating mb-3">
+                            <input asp-for="SignupDate" class="form-control" type="date" />
+                            <label asp-for="SignupDate" class="form-label"></label>
+                            <span asp-validation-for="SignupDate" class="text-danger"></span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg shadow-sm">
+                                Register Now
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-white">
+                    <a asp-action="Index" class="btn btn-outline-secondary btn-sm">
+                        Back to Contributions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+    .btn-success {
+        border-radius: 8px;
+    }
+
+    .btn-outline-secondary {
+        border-radius: 6px;
+    }
+</style>

@@ -1,0 +1,90 @@
+﻿@model IEnumerable<GiftOfTheGiversMWeb.Models.Donation>
+
+@{
+    ViewData["Title"] = "Donations";
+}
+
+<div class="page-header text-center mb-5">
+    <h1 class="fw-bold text-success"> Donations DashBoard </h1>
+    <p class="text-muted">Track all donations made to our projects.</p>
+</div>
+
+<div class="d-flex justify-content-end mb-3">
+    <a asp-action="Create" class="btn btn-success shadow-sm">
+        Make a Donation
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover shadow-sm rounded">
+        <thead class="table-success text-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Amount)</th>
+                <th>@Html.DisplayNameFor(model => model.DateDonated)</th>
+                <th>@Html.DisplayNameFor(model => model.Type)</th>
+                <th>@Html.DisplayNameFor(model => model.User)</th>
+                <th>@Html.DisplayNameFor(model => model.Project)</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="table-light">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> @Html.DisplayFor(modelItem => item.Amount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DateDonated)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                    <td>@Html.DisplayFor(modelItem => item.User.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Project.Title)</td>
+                    <td class="text-center">
+                        <a asp-action="Details" asp-route-id="@item.DonationId" class="btn btn-sm btn-outline-secondary me-2">🔍 Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.DonationId" class="btn btn-sm btn-outline-danger">🗑 Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .table {
+        border-radius: 0.75rem;
+        overflow: hidden;
+    }
+
+        .table thead {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+    .btn {
+        border-radius: 8px;
+    }
+
+    .btn-success {
+        background-color: #198754;
+        border: none;
+    }
+
+        .btn-success:hover {
+            background-color: #157347;
+        }
+
+    .btn-outline-success:hover {
+        background-color: #198754;
+        color: #fff;
+    }
+
+    .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: #fff;
+    }
+</style>

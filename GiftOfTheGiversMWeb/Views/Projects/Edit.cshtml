@@ -1,0 +1,95 @@
+﻿@model GiftOfTheGiversMWeb.Models.Project
+
+@{
+    ViewData["Title"] = "Edit Project";
+}
+
+<div class="page-header text-center mb-5">
+    <h1 class="fw-bold text-success">✏ Edit Project</h1>
+    <p class="text-muted">Update the details of your project below.</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg border-0 rounded-3">
+            <div class="card-header bg-success text-white fw-bold">
+                Project Information
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <input type="hidden" asp-for="ProjectId" />
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Title" class="form-control" placeholder="Project Title" />
+                        <label asp-for="Title" class="text-muted"></label>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Description" class="form-control" placeholder="Project Description" />
+                        <label asp-for="Description" class="text-muted"></label>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Location" class="form-control" placeholder="Project Location" />
+                        <label asp-for="Location" class="text-muted"></label>
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="StartDate" class="form-control" type="date" />
+                        <label asp-for="StartDate" class="text-muted"></label>
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Status" class="form-control" placeholder="Project Status" />
+                        <label asp-for="Status" class="text-muted"></label>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success btn-lg shadow-sm">
+                            💾 Save Changes
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+                            ⬅ Back to List
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-top: 4px solid #6c757d; /* grey accent */
+    }
+
+    .btn-success {
+        background-color: #198754;
+        border: none;
+    }
+
+        .btn-success:hover {
+            background-color: #157347;
+        }
+
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: #fff;
+    }
+</style>

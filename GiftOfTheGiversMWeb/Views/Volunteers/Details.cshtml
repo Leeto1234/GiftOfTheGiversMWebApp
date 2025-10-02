@@ -1,0 +1,65 @@
+﻿@model GiftOfTheGiversMWeb.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Volunteer Details";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-header bg-success text-white text-center">
+                    <h4 class="mb-0 fw-bold">🌍 Volunteer Details</h4>
+                </div>
+                <div class="card-body bg-light">
+                    <dl class="row mb-4">
+                        <dt class="col-sm-4 fw-bold text-secondary">
+                            @Html.DisplayNameFor(model => model.SignupDate)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.SignupDate)
+                        </dd>
+
+                        <dt class="col-sm-4 fw-bold text-secondary">
+                            @Html.DisplayNameFor(model => model.User)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.User.Email)
+                        </dd>
+
+                        <dt class="col-sm-4 fw-bold text-secondary">
+                            @Html.DisplayNameFor(model => model.Project)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Project.Title)
+                        </dd>
+                    </dl>
+
+                    <div class="text-center">
+                        <a asp-action="Index" class="btn btn-outline-secondary btn-lg px-4">
+                            ⬅ Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+    .btn-outline-secondary {
+        border-radius: 8px;
+    }
+</style>

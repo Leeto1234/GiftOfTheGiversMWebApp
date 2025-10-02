@@ -1,0 +1,97 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<<section class="hero d-flex align-items-center text-center text-light"
+          style="min-height: 70vh; background: url('gift-of-the-givers-logo.png') center/contain no-repeat; background-color: #bbd096;">
+    <div class="container">
+        <div class="hero-content">
+            
+
+            @if (!SignInManager.IsSignedIn(User))
+            {
+                <h1 class="display-3 fw-bold">Disaster Relief. Saving Lives.</h1>
+                <h1 class="display-3 fw-bold">Serving Humanithy</h1>
+                <p class="lead mb-4">Join us in providing emergency aid and hope to those affected by disasters worldwide.</p>
+                <a class="btn btn-ngo btn-lg px-5" asp-area="Identity" asp-page="/Account/Login">Get Started</a>
+            }
+            else
+            {
+                <h1 class="display-3 fw-bold mt-5">Welcome to Gift Of The Givers Foundation</h1>
+                <p class="lead mb-4">The Gift of the Givers Foundation is the largest disaster response non-governmental organisation of African origin on the African continent. The essence of our presence is to bring hope and restore dignity to the most vulnerable</p>
+                <div class="row mt-5">
+                    <!-- Donate Card -->
+                    <div class="col-md-4 mb-3">
+                        <div class="card shadow-lg border-0 h-100 text-dark">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <h5 class="card-title text-success fw-bold">Donate</h5>
+                                <p class="card-text">Support our mission with a donation to provide immediate relief to those who are in need.</p>
+                                <a asp-controller="Donations" asp-action="Index" class="btn btn-ngo mt-auto">Donate Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Volunteer Card -->
+                    <div class="col-md-4 mb-3">
+                        <div class="card shadow-lg border-0 h-100 text-dark">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <h5 class="card-title text-success fw-bold">Volunteer</h5>
+                                <p class="card-text">Join our team of volunteers and be part of the rescue and recovery efforts.</p>
+                                <a asp-controller="Volunteers" asp-action="Index" class="btn btn-ngo mt-auto">Join Us</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Report Disaster Card -->
+                    <div class="col-md-4 mb-3">
+                        <div class="card shadow-lg border-0 h-100 text-dark">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <h5 class="card-title text-success fw-bold">Report a Disaster</h5>
+                                <p class="card-text">Alert us about disasters in your area so we can respond quickly and save lives.</p>
+                                <a asp-controller="Alerts" asp-action="Index" class="btn btn-ngo mt-auto">Report Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card shadow-lg border-0 h-100 text-dark">
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <h5 class="card-title text-success fw-bold">Launch Project</h5>
+                                <p class="card-text">Create a project to respond to a disaster and save lives.</p>
+                                <a asp-controller="Projects" asp-action="Index" class="btn btn-ngo mt-auto">Launch Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .btn-ngo {
+        background-color: #e15018;
+        border: none;
+        font-weight: 600;
+        padding: 12px 24px;
+        border-radius: 8px;
+        color: #fff;
+        transition: 0.3s ease;
+    }
+
+        .btn-ngo:hover {
+            background-color: #7fc534;
+            transform: translateY(-2px);
+        }
+
+    .card {
+        border-radius: 12px;
+    }
+
+    .card-title {
+        font-size: 1.3rem;
+    }
+</style>
+

@@ -1,0 +1,75 @@
+﻿@model GiftOfTheGiversMWeb.Models.Alert
+
+@{
+    ViewData["Title"] = "Create Alert";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-header bg-success text-white text-center">
+                    <h4 class="mb-0 fw-bold"> Create New Alert</h4>
+                </div>
+                <div class="card-body bg-light">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label fw-bold text-secondary"></label>
+                            <input asp-for="Title" class="form-control rounded-3" placeholder="Enter alert title..." />
+                            <span asp-validation-for="Title" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label fw-bold text-secondary"></label>
+                            <textarea asp-for="Description" class="form-control rounded-3" rows="3" placeholder="Provide a detailed description..."></textarea>
+                            <span asp-validation-for="Description" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Location" class="form-label fw-bold text-secondary"></label>
+                            <input asp-for="Location" class="form-control rounded-3" placeholder="Enter location..." />
+                            <span asp-validation-for="Location" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="DatePosted" class="form-label fw-bold text-secondary"></label>
+                            <input asp-for="DatePosted" type="date" class="form-control rounded-3" />
+                            <span asp-validation-for="DatePosted" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg rounded-3"> Create Alert</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary btn-lg rounded-3"> Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+    textarea {
+        resize: none;
+    }
+</style>

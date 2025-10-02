@@ -1,0 +1,89 @@
+﻿@model GiftOfTheGiversMWeb.Models.Donation
+
+@{
+    ViewData["Title"] = "Create Donation";
+}
+
+<div class="page-header text-center mb-5">
+    <h1 class="fw-bold text-success"> Make a Donation</h1>
+    <p class="text-muted">Support a project and help us provide disaster relief.</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg border-0 rounded-3">
+            <div class="card-header bg-success text-white fw-bold">
+                Donation Details
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="form-floating mb-3">
+                        <select asp-for="ProjectId" class="form-control" asp-items="ViewBag.ProjectId">
+                            <option value="">-- Select Project --</option>
+                        </select>
+                        <label asp-for="ProjectId" class="text-muted"></label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Amount" class="form-control" placeholder="Donation Amount" />
+                        <label asp-for="Amount" class="text-muted"></label>
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="DateDonated" class="form-control" type="date" />
+                        <label asp-for="DateDonated" class="text-muted"></label>
+                        <span asp-validation-for="DateDonated" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Type" class="form-control" placeholder="Donation Type (e.g., Cash, Supplies)" />
+                        <label asp-for="Type" class="text-muted"></label>
+                        <span asp-validation-for="Type" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <button type="submit" class="btn btn-success btn-lg shadow-sm">
+                            Donate
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary btn-lg">
+                             Back to List
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-top: 4px solid #6c757d; /* grey accent */
+    }
+
+    .btn-success {
+        background-color: #198754;
+        border: none;
+    }
+
+        .btn-success:hover {
+            background-color: #157347;
+        }
+
+    .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: #fff;
+    }
+</style>

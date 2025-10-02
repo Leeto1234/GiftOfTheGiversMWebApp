@@ -1,0 +1,89 @@
+﻿@model GiftOfTheGiversMWeb.Models.Project
+
+@{
+    ViewData["Title"] = "Create Project";
+}
+
+<div class="page-header text-center mb-5">
+    <h1 class="fw-bold text-success">Create New Project</h1>
+    <p class="text-muted">Add details for a new project to support disaster relief and community aid.</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg border-0 rounded-3">
+            <div class="card-body p-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Title" class="form-control" placeholder="Project Title" />
+                        <label asp-for="Title" class="text-secondary"></label>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea asp-for="Description" class="form-control" style="height: 100px" placeholder="Project Description"></textarea>
+                        <label asp-for="Description" class="text-secondary"></label>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Location" class="form-control" placeholder="Location" />
+                        <label asp-for="Location" class="text-secondary"></label>
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="StartDate" type="date" class="form-control" />
+                        <label asp-for="StartDate" class="text-secondary"></label>
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <select asp-for="Status" class="form-select">
+                            <option value="Active">Active</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                        <label asp-for="Status" class="text-secondary"></label>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-lg shadow-sm"> Create Project</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <a asp-action="Index" class="btn btn-outline-secondary"> Back to List</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .page-header h1 {
+        letter-spacing: 1px;
+    }
+
+    .card {
+        border-top: 4px solid #198754; /* Bootstrap green */
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #198754;
+        box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+    }
+</style>
