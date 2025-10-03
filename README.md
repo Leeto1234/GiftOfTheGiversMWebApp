@@ -6,7 +6,7 @@ It enables **efficient management of donations, disaster relief activities, volu
 This project was developed in **C# (ASP.NET Core)** with **SQL Server** for backend storage and deployed via **Azure DevOps Pipelines**.
 
 Link to Azure Devops https://dev.Azure.com/ST103758110469/
-Link to GitHub  
+Link to GitHub  https://github.com/Leeto1234/GiftOfTheGiversMWebApp.git
 
 ## 🎯 Project Vision
 The goal of this project is to provide a **centralized, secure, and scalable platform** that helps the Gift of the Givers Foundation:
